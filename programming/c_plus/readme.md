@@ -1,3 +1,35 @@
+1. Tìm hiểu về cấu trúc dữ liệu và giải thuật ?
+	- Cấu trúc dữ liệu là gì ? - Ví dụ ? 			- x
+	- Giải thuật là gì ? - Ví dụ ?				- x
+	- Định nghĩa Lớp, đối tượng, thuộc tính, phương thức?	- x
+	- các mức độ truy cập (private, protected, public)?	- x
+	- pure virtual method là gì ? 				- x
+	- Destructor ảo có ý nghĩa gì ? 
+	- khác biệt giữ phương thức có const và không có const?	- x
+2. Lập trình hướng đối tượng ?					- xxx
+	- lập trình hướng đối tượng là gì ? 			- x
+	- có bao nhiêu đặc tính chính ? 			- xx
+	  -> đóng gói, vd? 					- x
+	  -> kế thừa, vd ? 					- x
+	  -> đa hình, vd ? 					- x
+	  -> trừu tượng, vd ? 					- x
+3. Giải thuật tìm kiếm (Searching Algorithms)
+4. Giải thuật sắp xếp (Sorting Algorithms)
+5. Giải thuật đồ thị (Graph Algorithms)
+6. Giải thuật quy hoạch động (Dynamic Programming)
+7. Giải thuật tham lam (Greedy Algorithms)
+8. Cách tiếp cận để xử lý bài toán một cách hiệu quả ?
+9. Bài toán về Searching Algorithms
+	Hệ thống quản lý thư viện
+	- yêu cầu bài toán là gì ?
+	- kiểu dữ liệu đầu vào và đầu ra ?
+	- ràng buộc là gì ?
+	- cấu trúc dữ liệu áp dụng là gì ? Dựa vào đâu ?
+	- có các giải thuật nào ?
+
+
+10. Cmake
+
 ==================================================================================================================================
 1. Tìm hiểu về cấu trúc dữ liệu và giải thuật ? - xx
 	- Cấu trúc dữ liệu là gì ? - Ví dụ ? - x
@@ -83,4 +115,20 @@
     5. Giải thuật
     Thêm sách: Thêm sách vào bảng băm (theo mã sách) và các multimap (theo tên sách, tác giả, năm xuất bản, thể loại).
     Tìm kiếm: Sử dụng hàm tìm kiếm của unordered_map và multimap để truy vấn dữ liệu.
-    
+
+==================================================================================================================================
+4. Lập trình hướng đối tượng là gì ?
+Lập trình hướng đối tượng (Object-Oriented Programming, OOP) là một phương pháp lập trình dựa trên việc tổ chức dữ liệu và chức năng thành các đối tượng, thay vì chỉ dựa vào các hàm và dữ liệu đơn giản. 
+    1. Đối Tượng (Object): Các thực thể của lớp, bao gồm dữ liệu (thuộc tính) và chức năng (phương thức).
+    2. Lớp (Class): Một khuôn mẫu (template) để tạo các đối tượng. Lớp định nghĩa các thuộc tính và phương thức mà đối tượng của lớp đó sẽ có.
+    3. Đóng Gói (Encapsulation): Quyền truy cập vào dữ liệu của đối tượng được kiểm soát thông qua các phương thức công cộng và riêng tư.
+    4. Kế Thừa (Inheritance): Cung cấp khả năng tạo lớp mới dựa trên lớp đã tồn tại, giúp tái sử dụng mã và mở rộng chức năng.
+    5. Đa Hình (Polymorphism): Cho phép các đối tượng của các lớp khác nhau sử dụng chung các phương thức với cùng tên nhưng thực hiện khác nhau.   
+Destructor ảo trong C++ được sử dụng để đảm bảo rằng khi một đối tượng của lớp dẫn xuất (derived class) bị hủy thông qua con trỏ của lớp cơ sở (base class), destructor của lớp dẫn xuất sẽ được gọi chính xác. Điều này rất quan trọng khi làm việc với các lớp có tính đa hình (polymorphism), vì nếu không có destructor ảo, có thể xảy ra rò rỉ bộ nhớ hoặc các vấn đề khác liên quan đến quản lý tài nguyên.
+==================================================================================================================================
+5. Ý Nghĩa của Destructor Ảo
+    1. Đảm Bảo Hủy Đối Tượng Đúng Cách: Nếu lớp cơ sở có một destructor không phải là ảo và bạn hủy một đối tượng của lớp dẫn xuất thông qua con trỏ của lớp cơ sở, chỉ có destructor của lớp cơ sở được gọi. Điều này có thể dẫn đến việc các tài nguyên mà lớp dẫn xuất quản lý không được giải phóng đúng cách.
+    2. Quản Lý Tài Nguyên Đúng Cách: Nếu lớp dẫn xuất có tài nguyên cần được giải phóng (như bộ nhớ động, tệp, kết nối mạng, v.v.), thì destructor của lớp dẫn xuất phải được gọi để đảm bảo tài nguyên này được giải phóng chính xác.
+virtual ~BankAccount() = default;
+    1. virtual: Khi khai báo destructor là virtual, nó đảm bảo rằng khi một đối tượng của lớp dẫn xuất bị hủy thông qua con trỏ của lớp cơ sở, destructor của lớp dẫn xuất cũng sẽ được gọi sau destructor của lớp cơ sở.
+    2. = default;: Đây là một cú pháp của C++11 trở về sau, cho phép bạn yêu cầu trình biên dịch tạo ra một destructor mặc định cho lớp này. Trong trường hợp này, mặc dù destructor là ảo, bạn không cần viết bất kỳ mã đặc biệt nào để hủy bỏ đối tượng, trình biên dịch sẽ tự động tạo ra một destructor mặc định.
